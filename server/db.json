@@ -7,6 +7,7 @@
             "email": "one@yopmail.com",
             "company": "company 1",
             "title": "company title 1",
+            "mobile": "0326440254",
             "groupId": "1"
         },
         {
@@ -15,8 +16,29 @@
             "photo": "https://res.cloudinary.com/ant-tech-cloudinary/image/upload/v1653446801/cld-sample.jpg",
             "email": "two@yopmail.com",
             "company": "company 2",
+            "mobile": "0326440254",
             "title": "company title 2",
             "groupId": "2"
+        },
+        {
+            "id": "three",
+            "name": "three",
+            "photo": "https://res.cloudinary.com/ant-tech-cloudinary/image/upload/v1653446801/cld-sample.jpg",
+            "email": "three@yopmail.com",
+            "company": "company 2",
+            "mobile": "0326440254",
+            "title": "company title 2",
+            "groupId": "2"
+        },
+        {
+            "id": "four",
+            "name": "four",
+            "photo": "https://res.cloudinary.com/ant-tech-cloudinary/image/upload/v1653446801/cld-sample.jpg",
+            "email": "four@yopmail.com",
+            "company": "company 2",
+            "mobile": "0326440254",
+            "title": "company title 2",
+            "groupId": "3"
         }
     ],
     "groups": [
