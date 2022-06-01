@@ -1,0 +1,36 @@
+{
+    "contacts": [
+        {
+            "id": "one",
+            "name": "one",
+            "photo": "https://res.cloudinary.com/ant-tech-cloudinary/image/upload/v1653446801/cld-sample.jpg",
+            "email": "one@yopmail.com",
+            "company": "company 1",
+            "title": "company title 1",
+            "groupId": "1"
+        },
+        {
+            "id": "two",
+            "name": "two",
+            "photo": "https://res.cloudinary.com/ant-tech-cloudinary/image/upload/v1653446801/cld-sample.jpg",
+            "email": "two@yopmail.com",
+            "company": "company 2",
+            "title": "company title 2",
+            "groupId": "2"
+        }
+    ],
+    "groups": [
+        {
+            "id": "1",
+            "name": "learn 1"
+        },
+        {
+            "id": "2",
+            "name": "learn 2"
+        },
+        {
+            "id": "3",
+            "name": "learn 3"
+        }
+    ]
+}
