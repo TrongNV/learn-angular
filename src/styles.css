@@ -5,4 +5,15 @@ body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: #f7e3f7;
+}
+.images-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+.images-circle-big{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
 }
