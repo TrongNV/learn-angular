@@ -1,49 +1,120 @@
 <div class="container mt-3">
-    <div class="row">
-        <div class="col">
-            <p class="h3 fw-bold text-danger">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem nulla itaque aliquid illo laborum odio, id molestias culpa fugiat neque cum totam voluptatem quam provident ad, eaque ipsam! Modi, delectus!
-            </p>
-        </div>
+  <div class="row">
+    <div class="col">
+      <p class="h3 fw-bold text-danger">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem nulla
+        itaque aliquid illo laborum odio, id molestias culpa fugiat neque cum
+        totam voluptatem quam provident ad, eaque ipsam! Modi, delectus!
+      </p>
     </div>
+  </div>
 </div>
+<pre>{{ contact | json }}</pre>
+<pre>name:{{ contactName.errors | json }}</pre>
 
 <!-- Create Contact Form -->
 <div class="container">
-<div class="row">
+  <div class="row">
     <div class="col-sm-4">
-        <form action="">
-            <div class="mb-2">
-                <input type="text" class="form-control" placeholder="Name" >
+      <form>
+        <div class="mb-2">
+          <label for="name" class="form-label">Name: </label>
+          <input
+            type="text"
+            class="form-control"
+            [class]="statusClass('name',contactName)"
+            id="name"
+            [(ngModel)]="contact.name"
+            #contactName="ngModel"
+            name="name"
+            placeholder="name"
+            required
+            minlength="4"
+          />
+          <div
+            class="invalid-feedback"
+            *ngIf="
+              contactName.invalid && (contactName.dirty || contactName.touched)
+            "
+          >
+            <div *ngIf="contactName.errors?.['required']">
+              contactName is required.
             </div>
-            <div class="mb-2">
-                <input type="text" class="form-control" placeholder="Photo Url" >
+            <div *ngIf="contactName.errors?.['minlength']">
+              contactName is minlength > 4.
             </div>
-            <div class="mb-2">
-                <input type="email" class="form-control" placeholder="Email" >
-            </div>
-            <div class="mb-2">
-                <input type="text" class="form-control" placeholder="Mobile" >
-            </div>
-            <div class="mb-2">
-                <input type="text" class="form-control" placeholder="Company" >
-            </div>
-            <div class="mb-2">
-                <input type="text" class="form-control" placeholder="Title" >
-            </div>
-            <div class="mb-2">
-                <select class="form-control" placeholder="">
-                    <option value="">Select a group</option>
-                </select>
-            </div>
-            <div class="mb-2">
-                <input type="submit" class="btn btn-danger" value="Create" >
-                <a routerLink="/contacts/admin" class="btn btn-dark ms-3">Close</a>
-            </div>
-        </form>
+          </div>
+        </div>
+        <div class="mb-2">
+          <input
+            [(ngModel)]="contact.photo"
+            name="photo"
+            type="text"
+            class="form-control"
+            placeholder="Photo Url"
+          />
+        </div>
+        <div class="mb-2">
+          <input
+            [(ngModel)]="contact.email"
+            name="email"
+            type="email"
+            class="form-control"
+            placeholder="Email"
+          />
+        </div>
+        <div class="mb-2">
+          <input
+            [(ngModel)]="contact.mobile"
+            name="mobile"
+            type="text"
+            class="form-control"
+            placeholder="Mobile"
+          />
+        </div>
+        <div class="mb-2">
+          <input
+            [(ngModel)]="contact.company"
+            name="company"
+            type="text"
+            class="form-control"
+            placeholder="Company"
+          />
+        </div>
+        <div class="mb-2">
+          <input
+            [(ngModel)]="contact.title"
+            name="title"
+            type="text"
+            class="form-control"
+            placeholder="Title"
+          />
+        </div>
+        <div class="mb-2">
+          <select
+            [(ngModel)]="contact.groupId"
+            name="groupId"
+            class="form-control"
+            *ngIf="groups.length > 0"
+          >
+            <option selected value="">Select a group</option>
+            <option [value]="group.id" *ngFor="let group of groups">
+              {{ group.name }}
+            </option>
+          </select>
+        </div>
+        <div class="mb-2">
+          <input type="submit" class="btn btn-danger" value="Create" />
+          <a routerLink="/contacts/admin" class="btn btn-dark ms-3">Close</a>
+        </div>
+      </form>
     </div>
     <div class="col-sm-4">
-        <img class="img-thumbnail images-circle" src="https://res.cloudinary.com/ant-tech-cloudinary/image/upload/v1653446853/sjbvnrebazcuaj1vga2x.png" alt="">
+      <img
+        class="img-thumbnail images-circle"
+        src="https://res.cloudinary.com/ant-tech-cloudinary/image/upload/v1653446853/sjbvnrebazcuaj1vga2x.png"
+        alt=""
+      />
     </div>
-</div>
+  </div>
 </div>
