@@ -10,19 +10,17 @@
   </div>
 </div>
 <pre>{{ contact | json }}</pre>
-<pre>name:{{ contactName.errors | json }}</pre>
 
 <!-- Create Contact Form -->
 <div class="container">
   <div class="row">
     <div class="col-sm-4">
-      <form>
+      <form (submit)="createSubmit()">
         <div class="mb-2">
-          <label for="name" class="form-label">Name: </label>
           <input
             type="text"
             class="form-control"
-            [class]="statusClass('name',contactName)"
+            [class]="statusClass(contactName)"
             id="name"
             [(ngModel)]="contact.name"
             #contactName="ngModel"
@@ -47,61 +45,149 @@
         </div>
         <div class="mb-2">
           <input
+            type="text"
+            class="form-control"
+            [class]="statusClass(contactPhoto)"
+            id="photo"
             [(ngModel)]="contact.photo"
+            #contactPhoto="ngModel"
             name="photo"
-            type="text"
-            class="form-control"
-            placeholder="Photo Url"
+            placeholder="photo url"
+            required
           />
+          <div
+            class="invalid-feedback"
+            *ngIf="
+              contactPhoto.invalid &&
+              (contactPhoto.dirty || contactPhoto.touched)
+            "
+          >
+            <div *ngIf="contactPhoto.errors?.['required']">
+              Contact photo url is required.
+            </div>
+            <div *ngIf="contactPhoto.errors?.['minlength']">
+              Contact photo url is minlength > 4.
+            </div>
+          </div>
         </div>
         <div class="mb-2">
           <input
+            type="text"
+            class="form-control"
+            [class]="statusClass(contactEmail)"
             [(ngModel)]="contact.email"
+            #contactEmail="ngModel"
             name="email"
-            type="email"
-            class="form-control"
-            placeholder="Email"
+            placeholder="email"
+            required
           />
+          <div
+            class="invalid-feedback"
+            *ngIf="
+              contactEmail.invalid &&
+              (contactEmail.dirty || contactEmail.touched)
+            "
+          >
+            <div *ngIf="contactEmail.errors?.['required']">
+              Contact email is required.
+            </div>
+          </div>
         </div>
         <div class="mb-2">
           <input
+            type="text"
+            class="form-control"
+            [class]="statusClass(contactMobile)"
             [(ngModel)]="contact.mobile"
+            #contactMobile="ngModel"
             name="mobile"
-            type="text"
-            class="form-control"
-            placeholder="Mobile"
+            placeholder="mobile"
+            required
           />
+          <div
+            class="invalid-feedback"
+            *ngIf="
+              contactMobile.invalid &&
+              (contactMobile.dirty || contactMobile.touched)
+            "
+          >
+            <div *ngIf="contactMobile.errors?.['required']">
+              Contact mobile is required.
+            </div>
+          </div>
         </div>
         <div class="mb-2">
           <input
+            type="text"
+            class="form-control"
+            [class]="statusClass(contactCompany)"
             [(ngModel)]="contact.company"
+            #contactCompany="ngModel"
             name="company"
-            type="text"
-            class="form-control"
-            placeholder="Company"
+            placeholder="company"
+            required
           />
+          <div
+            class="invalid-feedback"
+            *ngIf="
+              contactCompany.invalid &&
+              (contactCompany.dirty || contactCompany.touched)
+            "
+          >
+            <div *ngIf="contactCompany.errors?.['required']">
+              Contact company is required.
+            </div>
+          </div>
         </div>
         <div class="mb-2">
           <input
-            [(ngModel)]="contact.title"
-            name="title"
             type="text"
             class="form-control"
-            placeholder="Title"
+            [class]="statusClass(contactTitle)"
+            [(ngModel)]="contact.title"
+            #contactTitle="ngModel"
+            name="title"
+            placeholder="title"
+            required
           />
+          <div
+            class="invalid-feedback"
+            *ngIf="
+              contactTitle.invalid &&
+              (contactTitle.dirty || contactTitle.touched)
+            "
+          >
+            <div *ngIf="contactTitle.errors?.['required']">
+              Contact title is required.
+            </div>
+          </div>
         </div>
         <div class="mb-2">
           <select
+            class="form-select"
+            [class]="statusClass(contactGroupId)"
+            required
             [(ngModel)]="contact.groupId"
             name="groupId"
-            class="form-control"
+            #contactGroupId="ngModel"
             *ngIf="groups.length > 0"
           >
-            <option selected value="">Select a group</option>
+            <option selected disabled value="">Choose...</option>
             <option [value]="group.id" *ngFor="let group of groups">
               {{ group.name }}
             </option>
           </select>
+          <!-- <div
+            class="invalid-feedback"
+            *ngIf="
+              contactGroupId.invalid &&
+              (contactGroupId.dirty || contactGroupId.touched)
+            "
+          >
+            <div *ngIf="contactGroupId.errors?.['required']">
+              Contact group is required.
+            </div>
+          </div> -->
         </div>
         <div class="mb-2">
           <input type="submit" class="btn btn-danger" value="Create" />
