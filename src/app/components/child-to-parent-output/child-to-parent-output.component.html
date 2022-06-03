@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <p>child-to-parent-output works!</p>
+      <p>Message: {{ message }}</p>
+      <app-child-of-parent-output
+        (messageEvent)="receiveMessage($event)"
+      ></app-child-of-parent-output>
+    </div>
+  </div>
+</div>

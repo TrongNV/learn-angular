@@ -8,7 +8,7 @@ create component
 ng g c <component/name>
 
 create service
-ng g s
+ng g s <service/name>
 
 labary project
 bootstrap, @fortawesome/fortawesome-free
